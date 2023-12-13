@@ -3,7 +3,7 @@ const BASIC_URL:string = "https://www.googleapis.com/youtube/v3/search";
 
 export const youtubeApi = {
   async searchVideos(query: string){
-    const url = `${BASIC_URL}?part=snippet&q=${query}&key=${KEY}&type=video`;
+    const url = `${BASIC_URL}?part=snippet&q=${query}&key=${KEY}&type=video&maxResults=20`;
 
     try {
       const response = await fetch(url);

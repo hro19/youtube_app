@@ -27,14 +27,11 @@ import SearchBox from "./components/SearchBox.vue";
   min-width: 240px;
   padding: 30px 15px;
   background-color: #374151;
-  height: 100vh;
     color: #fff;
 }
 
 .wrapper .main_contante{
   width: 100%;
-  background-color: #111827;
-  height: 100vh;
   color: #fff;
 }
 
