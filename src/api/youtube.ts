@@ -19,18 +19,8 @@ export const youtubeApi = {
       throw error;
     }
   },
-  getVideoDetails(videoId: string) {
-    // Function to get details of a video
-    // ...
-  },
-  uploadVideo(videoData: any) {
-    // Function to upload a video
-    // ...
-  },
-  deleteVideo(videoId: string) {
-    // Function to delete a video
-    // ...
-  },
+  // getVideoDetails(videoId: string) {
+  // },
 };
 
 export default youtubeApi;
