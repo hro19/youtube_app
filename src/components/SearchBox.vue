@@ -6,7 +6,10 @@
     <ul>
       <li v-for="item in items">
         <img :src="item.snippet.thumbnails.default.url" />
-        {{ item.snippet.title }}
+        https://www.youtube.com/watch?v={{ item.id.videoId }}
+        <p>{{ item.snippet.title }}</p>
+        <p>{{ item.snippet.channelTitle }}</p>
+        <p>{{ item.snippet.publishedAt }}</p>
       </li>
     </ul>
   </div>
