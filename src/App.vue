@@ -32,6 +32,7 @@ import SearchBox from "./components/SearchBox.vue";
 
 .wrapper .main_contante{
   width: 100%;
+  min-height: 100vh;
   color: #fff;
 }
 

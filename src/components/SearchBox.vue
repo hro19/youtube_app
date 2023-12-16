@@ -10,6 +10,7 @@
         <p>{{ item.snippet.title }}</p>
         <p>{{ item.snippet.channelTitle }}</p>
         <p>{{ item.snippet.publishedAt }}</p>
+        <p>チャンネルID:{{ item.snippet.channelId }}</p>
       </li>
     </ul>
   </div>
@@ -21,7 +22,7 @@ import {youtubeApi} from '../api/youtube'
 
 export default defineComponent({
   setup() {
-    const query = ref('')
+    const query = ref<string>('')
     const items = ref<any[]>([])
 
     const search = async () => {

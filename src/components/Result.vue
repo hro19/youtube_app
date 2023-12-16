@@ -63,8 +63,5 @@ const tableData = [
 </script>
 
 <style scoped>
-.el-table,.el-table-column {
-    background-color: initial;
-}
 
 </style>
