@@ -16,12 +16,10 @@
   </div>
 </template>
 
-<script lang="ts">
-import {defineComponent, ref} from 'vue'
+<script setup lang="ts">
+import {ref} from 'vue'
 import {youtubeApi} from '../api/youtube'
 
-export default defineComponent({
-  setup() {
     const query = ref<string>('')
     const items = ref<any[]>([])
 
@@ -29,13 +27,6 @@ export default defineComponent({
       items.value = await youtubeApi.searchVideos(query.value)
     }
 
-    return {
-      query,
-      items,
-      search
-    }
-  }  
-})
 </script>
 
 <style scoped>
