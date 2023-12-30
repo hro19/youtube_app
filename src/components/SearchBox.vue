@@ -28,8 +28,7 @@ import SearchBoxItem from './SearchBoxItem.vue';
 
 <style scoped>
 .search_box {
-  margin-top: 20px;
-  margin-left: 10px;
+  margin: 20px 0 15px 10px;
 }
 
 .search_box input[type="text"] {

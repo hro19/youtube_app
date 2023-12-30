@@ -12,8 +12,8 @@ import SearchBox from "./components/SearchBox.vue";
     </div>
     <div class="main_contante">
       <HelloWorld msg="YouTubeアプリ" />
-      <Result />
       <SearchBox />
+      <Result />
     </div>
   </div>
 </template>
