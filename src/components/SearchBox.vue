@@ -2,23 +2,20 @@
   <div class="search_box">
     <input type="text" v-model="query" @keyup.enter="search" />
     <button @click="search">検索</button>
-
     <ul>
-      <li v-for="item in items">
-        <img :src="item.snippet.thumbnails.default.url" />
-        https://www.youtube.com/watch?v={{ item.id.videoId }}
-        <p>{{ item.snippet.title }}</p>
-        <p>{{ item.snippet.channelTitle }}</p>
-        <p>{{ item.snippet.publishedAt }}</p>
-        <p>チャンネルID:{{ item.snippet.channelId }}</p>
-      </li>
+      <SearchBoxItem
+        v-for="item in items" 
+        :key="item.etag"
+        :item="item" 
+      />
     </ul>
   </div>
 </template>
 
 <script setup lang="ts">
 import {ref} from 'vue'
-import {youtubeApi} from '../api/youtube'
+import { youtubeApi } from '../api/youtube';
+import SearchBoxItem from './SearchBoxItem.vue';
 
     const query = ref<string>('')
     const items = ref<any[]>([])
