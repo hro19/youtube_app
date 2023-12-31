@@ -5,7 +5,7 @@ import Side from "./components/Side.vue";
 import Result from "./components/Result.vue";
 import SearchBox from "./components/SearchBox.vue";
 
-const queryWord = ref<string>('')
+const queryWord = ref<string>('犬')
 </script>
 
 <template>
