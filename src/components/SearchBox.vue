@@ -1,6 +1,11 @@
 <template>
   <div class="search_box">
-    <input type="text" v-model="query" @keyup.enter="search" />
+  <input
+    :value="props.queryWord"
+    @input="(event: Event) => $emit('update:queryWord', (event.target as HTMLInputElement).value)"
+    @keyup.enter="search"
+    class="text-black"
+  />
     <button @click="search">検索</button>
     <ul>
       <SearchBoxItem
@@ -17,11 +22,16 @@ import {ref} from 'vue'
 import { youtubeApi } from '../api/youtube';
 import SearchBoxItem from './SearchBoxItem.vue';
 
-    const query = ref<string>('')
+    const props = defineProps({
+      queryWord: String
+    }) 
+
     const items = ref<any[]>([])
 
-    const search = async () => {
-      items.value = await youtubeApi.searchVideos(query.value)
+const search = async () => {
+      if (props.queryWord) {
+        items.value = await youtubeApi.searchVideos(props.queryWord);
+      }
     }
 
 </script>
