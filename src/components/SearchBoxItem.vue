@@ -1,7 +1,6 @@
 <template>
   <li>
     <img :src="item.snippet.thumbnails.default.url" />
-
     <div>
       <p>
         <a

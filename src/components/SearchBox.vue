@@ -2,18 +2,19 @@
   <div class="search_box">
     <input
       :value="props.queryWord"
-      @input="(event: Event) => $emit('update:queryWord', (event.target as HTMLInputElement).value)"
+      @input="(event: Event) => event.target && $emit('update:queryWord', (event.target as HTMLInputElement).value)"
       @keyup.enter="search"
       class="text-black"
     />
     <button @click="search">検索</button>
-    <ul>
+    <ul v-if="items">
       <SearchBoxItem
         v-for="item in items" 
         :key="item.id.videoId"
         :item="item" 
       />
     </ul>
+    <p v-else>表示できるデータがありません</p>
   </div>
 </template>
 
