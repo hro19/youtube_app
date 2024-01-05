@@ -4,7 +4,9 @@
       :value="props.queryWord"
       @input="(event: Event) => event.target && $emit('update:queryWord', (event.target as HTMLInputElement).value)"
       @keyup.enter="search"
-      class="text-black"
+      class="text-black mb-3"
+      id="query_word"
+      placeholder="キーワード"
     />
     <button @click="search">検索</button>
     <ul v-if="items">
@@ -40,8 +42,17 @@ onMounted(search);
 </script>
 
 <style scoped>
+#query_word {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0 10px;
+    font-size: 16px;
+    color: #333;
+}
 .search_box {
-  margin: 20px 0 15px 10px;
+  margin-bottom: 20px;
 }
 
 .search_box input[type="text"] {

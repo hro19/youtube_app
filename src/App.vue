@@ -1,11 +1,7 @@
 <script setup lang="ts">
-import {ref} from 'vue'
 import HelloWorld from "./components/HelloWorld.vue";
 import Side from "./components/Side.vue";
 import Result from "./components/Result.vue";
-import SearchBox from "./components/SearchBox.vue";
-
-const queryWord = ref<string>('web react')
 </script>
 
 <template>
@@ -15,7 +11,6 @@ const queryWord = ref<string>('web react')
     </div>
     <div class="main_contante">
       <HelloWorld msg="YouTubeアプリ" />
-      <SearchBox :queryWord="queryWord" @update:queryWord="queryWord = $event" />
       <Result />
     </div>
   </div>
