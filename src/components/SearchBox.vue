@@ -10,7 +10,7 @@
     <ul>
       <SearchBoxItem
         v-for="item in items" 
-        :key="item.etag"
+        :key="item.id.videoId"
         :item="item" 
       />
     </ul>
@@ -21,12 +21,13 @@
 import { ref, onMounted } from 'vue'
 import { youtubeApi } from '../api/youtube';
 import SearchBoxItem from './SearchBoxItem.vue';
+import { Video } from "../ts/video";
 
 const props = defineProps({
   queryWord: String
 }) 
 
-const items = ref<any[]>([])
+const items = ref<Video[] | null>(null)
 
 const search = async () => {
   if (props.queryWord) {

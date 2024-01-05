@@ -21,10 +21,11 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { dateUntilDayJap } from "../lib/dateFns";
+import { Video } from "../ts/video";
 
 const props = defineProps({
   item: {
-    type: Object,
+    type: Object as () => Video,
     required: true,
   },
 });
