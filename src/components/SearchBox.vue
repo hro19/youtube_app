@@ -9,19 +9,11 @@
       placeholder="キーワード"
     />
     <button @click="doSearch">検索</button>
-    <ul v-if="items">
-      <SearchBoxItem
-        v-for="item in items" 
-        :key="item.id.videoId"
-        :item="item" 
-      />
-    </ul>
-    <p v-else>表示できるデータがありません</p>
+
   </div>
 </template>
 
 <script setup lang="ts">
-import SearchBoxItem from './SearchBoxItem.vue';
 import { Video } from "../ts/video";
 import { defineProps, PropType, defineEmits } from 'vue';
 
