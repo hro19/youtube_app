@@ -8,7 +8,7 @@ export type Video = {
     channelId: string;
     channelTitle: string;
     thumbnails: {
-      default: {
+      high: {
         url: string;
       };
     };
