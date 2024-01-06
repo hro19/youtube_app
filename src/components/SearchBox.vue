@@ -2,13 +2,13 @@
   <div class="search_box">
     <input
       :value="props.queryWord"
-      @input="(event: Event) => event.target && $emit('update:queryWord', (event.target as HTMLInputElement).value)"
-      @keyup.enter="search"
+      @input="doChangeQueryWord"
+      @keyup.enter="doSearch"
       class="text-black mb-3"
       id="query_word"
       placeholder="キーワード"
     />
-    <button @click="search">検索</button>
+    <button @click="doSearch">検索</button>
     <ul v-if="items">
       <SearchBoxItem
         v-for="item in items" 
@@ -21,24 +21,24 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import { youtubeApi } from '../api/youtube';
 import SearchBoxItem from './SearchBoxItem.vue';
 import { Video } from "../ts/video";
+import { defineProps, PropType, defineEmits } from 'vue';
 
 const props = defineProps({
-  queryWord: String
-}) 
+  queryWord: String,
+  items: {
+    type: Array as PropType<Video[] | null>,
+  },
+});
 
-const items = ref<Video[] | null>(null)
-
-const search = async () => {
-  if (props.queryWord) {
-    items.value = await youtubeApi.searchVideos(props.queryWord);
-  }
+const emit = defineEmits(['search', 'changeQueryWord'])  
+const doSearch = () => emit('search');
+const doChangeQueryWord = (event: Event) => {
+  const value = (event.target as HTMLInputElement).value;
+  emit('changeQueryWord', value);
 }
 
-onMounted(search);
 </script>
 
 <style scoped>
