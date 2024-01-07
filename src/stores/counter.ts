@@ -1,24 +1,28 @@
 import {defineStore} from "pinia";
+import { youtubeApi } from "../api/youtube";
+import { Video } from "../ts/video";
 
 interface State {
-	counter: number;
+	videoData: Video[] | null;
+	queryWord: string;
 }
 
 export const useCounterStore = defineStore({
-	id: "counter",
-	state: (): State => {
-		return {
-			counter: 0
-		};
+  id: "video",
+  state: (): State => {
+    return {
+		videoData: null,
+		queryWord: "cloudflare",
+    };
+  },
+  getters: {
+    // doubleCount: (state): any => {
+    //   return state.videoData * 2;
+    // },
+  },
+  actions: {
+	async search(word: string): Promise<void> {
+		this.videoData = await youtubeApi.searchVideos(word);
 	},
-	getters: {
-		doubleCount: (state): number => {
-			return state.counter * 2;
-		}
-	},
-	actions: {
-		incrementCount(): void {
-			this.counter++;
-		}
-	}
+  },
 });

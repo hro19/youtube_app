@@ -1,36 +1,25 @@
 <template>
   <div class="search_box">
     <input
-      :value="props.queryWord"
-      @input="doChangeQueryWord"
-      @keyup.enter="doSearch"
+      :value="counterStore.queryWord"
+      @input="changeQueryWord"
+      @keyup.enter="counterStore.search(counterStore.queryWord)"
       class="text-black mb-3"
       id="query_word"
       placeholder="キーワード"
     />
-    <button @click="doSearch">検索</button>
+    <button @click="counterStore.search(counterStore.queryWord)">検索</button>
 
   </div>
 </template>
 
 <script setup lang="ts">
-import { Video } from "../ts/video";
-import { defineProps, PropType, defineEmits } from 'vue';
+import { useCounterStore } from "../stores/counter";
 
-const props = defineProps({
-  queryWord: String,
-  items: {
-    type: Array as PropType<Video[] | null>,
-  },
-});
-
-const emit = defineEmits(['search', 'changeQueryWord'])  
-const doSearch = () => emit('search');
-const doChangeQueryWord = (event: Event) => {
-  const value = (event.target as HTMLInputElement).value;
-  emit('changeQueryWord', value);
+const counterStore = useCounterStore();
+const changeQueryWord = (event: any) => {
+  counterStore.queryWord = event.target.value;
 }
-
 </script>
 
 <style scoped>

@@ -1,46 +1,28 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-
 import HelloWorld from "./components/HelloWorld.vue";
 import Result from "./components/Result.vue";
 
 import SubscribeSlider from "./components/SubscribeSlider.vue";
 import SearchBox from "./components/SearchBox.vue";
-import { youtubeApi } from './api/youtube';
-import { Video } from "./ts/video";
-import Pini from "./components/Pini.vue";
+import { useCounterStore } from "./stores/counter";
 
-const queryWord = ref<string>("犬")
-const items = ref<Video[] | null>(null)
+const counterStore = useCounterStore();
 
-const search = async () => {
-  if (queryWord) {
-    items.value = await youtubeApi.searchVideos(queryWord.value);
-  }
-}
-
-const changeQueryWord = (word: string) => {
-  queryWord.value = word;
-}
 </script>
 
 <template>
   <div class="wrapper">
     <div class="side">
       <h1 class="text-2xl font-bold mb-2">クエリ入力</h1>
-      <SearchBox 
-      :queryWord="queryWord" 
-      :items="items" 
-      @search="search" 
-      @changeQueryWord="changeQueryWord" />
+      <SearchBox />
       <SubscribeSlider />
     </div>
     <div class="main_contante">
       <HelloWorld msg="YouTubeアプリ" />
-      <Result :items="items" />
+      <Result :items="counterStore.videoData" />
     </div>
   </div>
-  <Pini />
+  <!-- <Pini /> -->
 </template>
 
 <style scoped>

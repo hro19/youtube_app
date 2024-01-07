@@ -1,27 +1,23 @@
 <script setup lang="ts">
-import {computed} from "vue";
-import {useCounterStore} from "../stores/counter";
+import { computed, onMounted } from "vue";
+import { useCounterStore } from "../stores/counter";
+import SearchBoxItem from "./SearchBoxItem.vue";
 
 const counterStore = useCounterStore();
-const count = computed(
-	(): number => {
-		return counterStore.counter;
-	}
-);
-const doubleCount = computed(
-	(): number => {
-		return counterStore.doubleCount;
-	}
-);
-const onIncrementClick = () => {
-	counterStore.incrementCount();
-};
+const videosDesc = computed((): any => {
+  return counterStore.videoData;
+});
+
+onMounted(() => {
+  counterStore.search("vue.js");
+});
 </script>
 
 <template>
-    <div class="text-white">
-        <p>現在のポイント: {{count}}</p>
-        <p>現在のポイントさらに倍: {{doubleCount}}</p>
-        <button v-on:click="onIncrementClick">加算</button>
-    </div>
+  <div class="text-white">
+    <h2>piniaでの表示</h2>
+    <ul v-if="videosDesc">
+      <SearchBoxItem v-for="video in videosDesc" :key="video.id.videoId" :item="video" />
+    </ul>
+  </div>
 </template>

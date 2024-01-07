@@ -1,7 +1,7 @@
 <template>
-    <ul v-if="props.items">
+    <ul v-if="videosDesc">
       <SearchBoxItem
-        v-for="item in items" 
+        v-for="item in videosDesc" 
         :key="item.id.videoId"
         :item="item" 
       />
@@ -10,15 +10,18 @@
 </template>
 
 <script lang="ts" setup>
+import { computed, onMounted } from "vue";
+import { useCounterStore } from "../stores/counter";
 import SearchBoxItem from './SearchBoxItem.vue';
 import { Video } from "../ts/video";
-import { defineProps, PropType } from 'vue';
 
-const props = defineProps({
-  queryWord: String,
-  items: {
-    type: Array as PropType<Video[] | null>,
-  },
+const counterStore = useCounterStore();
+const videosDesc = computed((): Video[]|null => {
+  return counterStore.videoData;
+});
+
+onMounted(() => {
+  counterStore.search(counterStore.queryWord);
 });
 </script>
 
