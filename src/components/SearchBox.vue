@@ -1,24 +1,25 @@
 <template>
   <div class="search_box">
     <input
-      :value="counterStore.queryWord"
+      :value="videoStore.queryWord"
       @input="changeQueryWord"
-      @keyup.enter="counterStore.search(counterStore.queryWord)"
+      @keyup.enter="videoStore.search(videoStore.queryWord)"
       class="text-black mb-3"
       id="query_word"
       placeholder="キーワード"
     />
-    <button @click="counterStore.search(counterStore.queryWord)">検索</button>
+    <button @click="videoStore.search(videoStore.queryWord)">検索</button>
 
   </div>
 </template>
 
 <script setup lang="ts">
-import { useCounterStore } from "../stores/counter";
+import { useVideoStore } from "../stores/videoAtom";
 
-const counterStore = useCounterStore();
-const changeQueryWord = (event: any) => {
-  counterStore.queryWord = event.target.value;
+const videoStore = useVideoStore();
+const changeQueryWord = (event: Event) => {
+  const target = event.target as HTMLInputElement;
+  videoStore.queryWord = target.value;
 }
 </script>
 
@@ -49,3 +50,4 @@ const changeQueryWord = (event: any) => {
 }
 
 </style>
+../stores/video

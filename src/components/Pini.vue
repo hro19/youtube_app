@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { computed, onMounted } from "vue";
-import { useCounterStore } from "../stores/counter";
+import { useVideoStore } from "../stores/videoAtom";
 import SearchBoxItem from "./SearchBoxItem.vue";
 
-const counterStore = useCounterStore();
+const videoStore = useVideoStore();
 const videosDesc = computed((): any => {
-  return counterStore.videoData;
+  return videoStore.videoData;
 });
 
 onMounted(() => {
-  counterStore.search("vue.js");
+  videoStore.search("vue.js");
 });
 </script>
 
@@ -21,3 +21,4 @@ onMounted(() => {
     </ul>
   </div>
 </template>
+../stores/video

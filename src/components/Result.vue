@@ -11,20 +11,20 @@
 
 <script lang="ts" setup>
 import { computed, onMounted } from "vue";
-import { useCounterStore } from "../stores/counter";
+import { useVideoStore } from "../stores/videoAtom";
 import SearchBoxItem from './SearchBoxItem.vue';
 import { Video } from "../ts/video";
 
-const counterStore = useCounterStore();
+const videoStore = useVideoStore();
 const videosDesc = computed((): Video[]|null => {
-  return counterStore.videoData;
+  return videoStore.videoData;
 });
 
 onMounted(() => {
-  counterStore.search(counterStore.queryWord);
+  videoStore.search(videoStore.queryWord);
 });
 </script>
 
 <style scoped>
 
-</style>
+</style>../stores/video

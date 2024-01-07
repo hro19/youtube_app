@@ -4,9 +4,9 @@ import Result from "./components/Result.vue";
 
 import SubscribeSlider from "./components/SubscribeSlider.vue";
 import SearchBox from "./components/SearchBox.vue";
-import { useCounterStore } from "./stores/counter";
+import { useVideoStore } from "./stores/videoAtom";
 
-const counterStore = useCounterStore();
+const videoStore = useVideoStore();
 
 </script>
 
@@ -19,7 +19,7 @@ const counterStore = useCounterStore();
     </div>
     <div class="main_contante">
       <HelloWorld msg="YouTubeアプリ" />
-      <Result :items="counterStore.videoData" />
+      <Result :items="videoStore.videoData" />
     </div>
   </div>
   <!-- <Pini /> -->
@@ -44,3 +44,4 @@ const counterStore = useCounterStore();
 }
 
 </style>
+./stores/video

@@ -7,7 +7,7 @@ interface State {
 	queryWord: string;
 }
 
-export const useCounterStore = defineStore({
+export const useVideoStore = defineStore({
   id: "video",
   state: (): State => {
     return {
