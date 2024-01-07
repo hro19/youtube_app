@@ -8,6 +8,7 @@ import SubscribeSlider from "./components/SubscribeSlider.vue";
 import SearchBox from "./components/SearchBox.vue";
 import { youtubeApi } from './api/youtube';
 import { Video } from "./ts/video";
+import Pini from "./components/Pini.vue";
 
 const queryWord = ref<string>("犬")
 const items = ref<Video[] | null>(null)
@@ -39,6 +40,7 @@ const changeQueryWord = (word: string) => {
       <Result :items="items" />
     </div>
   </div>
+  <Pini />
 </template>
 
 <style scoped>
