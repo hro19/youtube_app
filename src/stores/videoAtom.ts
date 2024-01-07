@@ -16,13 +16,18 @@ export const useVideoStore = defineStore({
     };
   },
   getters: {
-    // doubleCount: (state): any => {
-    //   return state.videoData * 2;
-    // },
+    videoDesc: (state): any => {
+      if (state.videoData) {
+        return state.videoData.sort((a, b) => {
+          return new Date(b.snippet.publishedAt).getTime() - new Date(a.snippet.publishedAt).getTime();
+        });
+      }
+      return null;
+    },
   },
   actions: {
-	async search(word: string): Promise<void> {
-		this.videoData = await youtubeApi.searchVideos(word);
-	},
+    async search(word: string): Promise<void> {
+      this.videoData = await youtubeApi.searchVideos(word);
+    },
   },
 });

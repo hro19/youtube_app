@@ -1,7 +1,7 @@
 <template>
-    <ul v-if="videosDesc">
+    <ul v-if="videoStore.videoDesc">
       <SearchBoxItem
-        v-for="item in videosDesc" 
+        v-for="item in videoStore.videoDesc" 
         :key="item.id.videoId"
         :item="item" 
       />
@@ -10,15 +10,11 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, onMounted } from "vue";
+import { onMounted } from "vue";
 import { useVideoStore } from "../stores/videoAtom";
 import SearchBoxItem from './SearchBoxItem.vue';
-import { Video } from "../ts/video";
 
 const videoStore = useVideoStore();
-const videosDesc = computed((): Video[]|null => {
-  return videoStore.videoData;
-});
 
 onMounted(() => {
   videoStore.search(videoStore.queryWord);
