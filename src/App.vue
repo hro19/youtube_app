@@ -18,7 +18,8 @@ onMounted(async () => {
 });
 
 onMounted(() => {
-  dbFavorites.insert("町田",15)
+  dbFavorites.insert("前原", 22),
+  dbFavorites.eliminate(5)
 });
 
 </script>

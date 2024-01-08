@@ -27,6 +27,10 @@ export class MySubClassedDexie extends Dexie {
   async getsAll() {
     return await this.favorites.toArray();
   }
+
+  async eliminate(id:number) {
+    this.favorites.delete(id);
+  }
 }
 
 export const dbFavorites = new MySubClassedDexie();
