@@ -5,8 +5,21 @@ import Result from "./components/Result.vue";
 import SubscribeSlider from "./components/SubscribeSlider.vue";
 import SearchBox from "./components/SearchBox.vue";
 import { useVideoStore } from "./stores/videoAtom";
+import { dbFavorites } from "./lib/dexie";
+import { onMounted, ref } from "vue";
 
 const videoStore = useVideoStore();
+
+const favorites = ref<any>([]);
+console.log(favorites);
+
+onMounted(async () => {
+  favorites.value = await dbFavorites.getsAll();
+});
+
+onMounted(() => {
+  dbFavorites.insert("町田",15)
+});
 
 </script>
 
@@ -18,11 +31,11 @@ const videoStore = useVideoStore();
       <SubscribeSlider />
     </div>
     <div class="main_contante">
+
       <HelloWorld msg="YouTubeアプリ" />
       <Result :items="videoStore.videoData" />
     </div>
   </div>
-  <!-- <Pini /> -->
 </template>
 
 <style scoped>
@@ -44,4 +57,3 @@ const videoStore = useVideoStore();
 }
 
 </style>
-./stores/video
