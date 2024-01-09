@@ -8,7 +8,6 @@
       id="query_word"
       placeholder="キーワード"
     />
-    <button @click="videoStore.search(videoStore.queryWord)">検索</button>
 
   </div>
 </template>
@@ -50,4 +49,3 @@ const changeQueryWord = (event: Event) => {
 }
 
 </style>
-../stores/video

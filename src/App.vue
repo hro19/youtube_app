@@ -4,6 +4,7 @@ import Result from "./components/Result.vue";
 import SubscribeSlider from "./components/SubscribeSlider.vue";
 import SearchBox from "./components/SearchBox.vue";
 import Favorites from "./components/Favorites.vue";
+import SearchButton from "./components/SearchButton.vue";
 
 import { useVideoStore } from "./stores/videoAtom";
 
@@ -17,6 +18,7 @@ const videoStore = useVideoStore();
       <h1 class="text-2xl font-bold mb-2">クエリ入力</h1>
       <SearchBox />
       <SubscribeSlider />
+      <SearchButton />
       <Favorites />
     </div>
     <div class="main_contante">
