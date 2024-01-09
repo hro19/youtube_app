@@ -17,7 +17,7 @@
           <p>チャンネルID:{{ item.snippet.channelId }}</p>
           <button
             class="inline-flex items-center justify-center text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-primary/90 h-10 bg-green-500 text-white px-6 py-2 rounded"
-            @click="insertFavo(item.snippet.channelTitle, 25)"
+            @click="insertFavo(item.id.videoId,item.snippet.title,item.snippet.thumbnails.high.url)"
           >
             後で見る
           </button>
@@ -46,8 +46,8 @@ const dateJap = computed(() => {
 
 const favorites = ref<any>([]);
 
-const insertFavo = async(name: string, age: number) => {
-  dbFavorites.insert(name, age);
+const insertFavo = async(videoId: string, title: string, thumbnail:string) => {
+  dbFavorites.insert(videoId, title, thumbnail);
   favorites.value = await dbFavorites.getsAll();
 };
 </script>

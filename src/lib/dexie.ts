@@ -2,8 +2,9 @@ import Dexie, { Table } from "dexie";
 
 export interface Favorite {
   id?: number;
-  name: string;
-  age: number;
+  videoId: string;
+  title: string;
+  thumbnail :string;
 }
 
 export class MySubClassedDexie extends Dexie {
@@ -12,13 +13,13 @@ export class MySubClassedDexie extends Dexie {
   constructor() {
     super("ytvueapp");
     this.version(1).stores({
-      favorites: "++id, name, age", // Primary key and indexed props
+      favorites: "++id,videoId,title,thumbnail", // Primary key and indexed props
     });
   }
 
-  async insert(name: string, age: number) {
+  async insert(videoId: string, title: string, thumbnail :string) {
     try {
-      await this.favorites.add({ name: name, age: age });
+      await this.favorites.add({ videoId, title, thumbnail });
     } catch (e) {
       console.error(e);
     }
