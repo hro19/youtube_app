@@ -1,5 +1,5 @@
 <template>
-    <h3 class="text-xl text-amber-500 mt-2 mb-2">後で見るリスト</h3>
+    <h3 class="text-xl text-amber-500 mt-2 mb-2 border-4 border-amber-600 px-3 py-2">後で見るリスト</h3>
     <ul>
         <li v-for="item in favorites" :key="item.id">
             {{ item.name }} {{ item.age }}歳
@@ -13,10 +13,6 @@ import { onMounted, ref } from "vue";
 import { dbFavorites } from "../lib/dexie";
 
 const favorites = ref<any>([]);
-
-const insertFavo = (name: string, age: number) => {
-    dbFavorites.insert(name, age);
-};
 
 const eliminateFavo = async(id: number) => {
     dbFavorites.eliminate(id);
