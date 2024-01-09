@@ -10,15 +10,10 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted } from "vue";
 import { useVideoStore } from "../stores/videoAtom";
 import SearchBoxItem from './SearchBoxItem.vue';
 
 const videoStore = useVideoStore();
-
-onMounted(() => {
-  videoStore.search(videoStore.queryWord);
-});
 </script>
 
 <style scoped>
