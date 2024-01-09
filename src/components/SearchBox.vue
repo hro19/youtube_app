@@ -41,11 +41,4 @@ const changeQueryWord = (event: Event) => {
   color: #111;
   font-size: 1.3rem;
 }
-
-.search_box button {
-  background-color: #aaa;
-  padding:5px 10px;
-  border-radius: 12px;
-}
-
 </style>
