@@ -1,26 +1,13 @@
 <script setup lang="ts">
 import HelloWorld from "./components/HelloWorld.vue";
 import Result from "./components/Result.vue";
-
 import SubscribeSlider from "./components/SubscribeSlider.vue";
 import SearchBox from "./components/SearchBox.vue";
+import Favorites from "./components/Favorites.vue";
+
 import { useVideoStore } from "./stores/videoAtom";
-import { dbFavorites } from "./lib/dexie";
-import { onMounted, ref } from "vue";
 
 const videoStore = useVideoStore();
-
-const favorites = ref<any>([]);
-console.log(favorites);
-
-onMounted(async () => {
-  favorites.value = await dbFavorites.getsAll();
-});
-
-onMounted(() => {
-  dbFavorites.insert("前原", 22),
-  dbFavorites.eliminate(5)
-});
 
 </script>
 
@@ -30,6 +17,7 @@ onMounted(() => {
       <h1 class="text-2xl font-bold mb-2">クエリ入力</h1>
       <SearchBox />
       <SubscribeSlider />
+      <Favorites />
     </div>
     <div class="main_contante">
 
