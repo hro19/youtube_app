@@ -3,7 +3,7 @@
     <input
       :value="videoStore.queryWord"
       @input="changeQueryWord"
-      @keyup.enter="videoStore.search(videoStore.queryWord, videoStore.isJapMovie)"
+      @keyup.enter="videoStore.search(videoStore)"
       class="text-black mb-3"
       id="query_word"
       placeholder="キーワード"

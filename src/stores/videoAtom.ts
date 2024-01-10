@@ -31,8 +31,11 @@ export const useVideoStore = defineStore({
     },
   },
   actions: {
-    async search(queryWord: string,isJapMovie:boolean): Promise<void> {
-      this.videoData = await youtubeApi.searchVideos(queryWord, isJapMovie);
+    async search(videoAtom: State): Promise<void> {
+      this.videoData = await youtubeApi.searchVideos(
+        videoAtom.queryWord,
+        videoAtom.isJapMovie
+      );
     },
   },
 });
