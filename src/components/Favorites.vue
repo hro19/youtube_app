@@ -20,7 +20,11 @@ const eliminateFavo = async(id: number) => {
 
 onMounted(async () => {
     favorites.value = await dbFavorites.getsAll();
+    setInterval(refreshFavorites, 10000);
 });
 
+const refreshFavorites = async () => {
+    favorites.value = await dbFavorites.getsAll();
+    }
 
 </script>
