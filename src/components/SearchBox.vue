@@ -3,7 +3,7 @@
     <input
       :value="videoStore.queryWord"
       @input="changeQueryWord"
-      @keyup.enter="videoStore.search(videoStore.queryWord)"
+      @keyup.enter="videoStore.search(videoStore.queryWord, videoStore.isJapMovie)"
       class="text-black mb-3"
       id="query_word"
       placeholder="キーワード"
@@ -14,8 +14,8 @@
 
 <script setup lang="ts">
 import { useVideoStore } from "../stores/videoAtom";
-
 const videoStore = useVideoStore();
+
 const changeQueryWord = (event: Event) => {
   const target = event.target as HTMLInputElement;
   videoStore.queryWord = target.value;

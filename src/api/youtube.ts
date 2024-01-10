@@ -2,8 +2,10 @@ const KEY:string = "AIzaSyCmbnBOCABsalwCjtkM9iWz3ij9YJrx0Ao";
 const BASIC_URL:string = "https://www.googleapis.com/youtube/v3/search";
 
 export const youtubeApi = {
-  async searchVideos(query: string){
-    const url = `${BASIC_URL}?part=snippet&q=${query}&key=${KEY}&type=video&maxResults=20`;
+  async searchVideos(query: string,isJapMovie:boolean){
+    const url = `${BASIC_URL}?part=snippet&q=${query}&key=${KEY}&type=video&maxResults=20&relevanceLanguage=${
+      isJapMovie ? "ja" : "en"
+    }`;
 
     try {
       const response = await fetch(url);

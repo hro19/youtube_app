@@ -1,6 +1,6 @@
 <template>
 <div class="my-3">
-    <button @click="videoStore.search(videoStore.queryWord)">検索</button>
+    <button @click="videoStore.search(videoStore.queryWord,videoStore.isJapMovie)">検索</button>
 </div>
 </template>
 
