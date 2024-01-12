@@ -6,8 +6,6 @@ const cookies = useCookies(['ya_username'])
 
 <template>
   <div class="text-white">
-    <strong>ユーザーネーム</strong>: {{ cookies.get('ya_username') }}
-    <hr>
     <button @click="cookies.set('ya_username', 'ダミアン',{expires: new Date(Date.now() + (24 * 60 * 60 * 1000)),})">
       ダミアン
     </button>
