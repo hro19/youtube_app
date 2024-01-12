@@ -1,15 +1,7 @@
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
 import { useCookies } from '@vueuse/integrations/useCookies'
 
-export default defineComponent({
-  setup() {
-    const cookies = useCookies(['username'])
-    return {
-      cookies,
-    }
-  },
-})
+const cookies = useCookies(['username'])
 </script>
 
 <template>
