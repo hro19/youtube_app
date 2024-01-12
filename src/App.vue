@@ -7,6 +7,7 @@ import Favorites from "./components/Favorites.vue";
 import SearchButton from "./components/SearchButton.vue";
 import JapSwitch from "./components/JapSwitch.vue";
 import UserName from "./components/UserName.vue";
+import Cookies from "./components/Cookies.vue";
 
 import { useVideoStore } from "./stores/videoAtom";
 
@@ -15,6 +16,7 @@ const videoStore = useVideoStore();
 </script>
 
 <template>
+  <Cookies />
   <UserName />
   <div class="wrapper">
     <div class="side">
