@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@kouts/vue-modal": "^5.0.0",
     "date-fns": "^3.0.6",
     "dexie": "^3.2.4",
     "element-plus": "^2.4.3",

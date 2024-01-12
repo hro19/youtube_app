@@ -6,6 +6,7 @@ import SearchBox from "./components/SearchBox.vue";
 import Favorites from "./components/Favorites.vue";
 import SearchButton from "./components/SearchButton.vue";
 import JapSwitch from "./components/JapSwitch.vue";
+import UserName from "./components/UserName.vue";
 
 import { useVideoStore } from "./stores/videoAtom";
 
@@ -14,6 +15,7 @@ const videoStore = useVideoStore();
 </script>
 
 <template>
+  <UserName />
   <div class="wrapper">
     <div class="side">
       <h1 class="text-2xl font-bold mb-2">クエリ入力</h1>
