@@ -1,5 +1,5 @@
 <template>
-<div class="my-3">
+<div class="mt-3 mb-32">
     <button @click="videoStore.search(videoStore)">検索</button>
 </div>
 </template>
