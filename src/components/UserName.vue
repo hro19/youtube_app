@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="flex justify-end gap-2">
-                        <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full" type="button">ログイン</button>
+                        <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full" type="button" @click="loginUsername(input)">ログイン</button>
                         <button class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full" type="button" @click="showModal = false">Close</button>
                     </div>
                 </div>
@@ -33,7 +33,12 @@ onBeforeMount(() => {
     }
 });
 
-
+const loginUsername = async (name: string) => {
+    await cookies.set('ya_username', name, { expires: new Date(Date.now() + (24 * 60 * 60 * 1000)) } as any)
+    if (cookies.get('ya_username')) {
+        showModal.value = false;
+    }
+}
 
 </script>
 
