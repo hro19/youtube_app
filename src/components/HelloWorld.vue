@@ -1,17 +1,23 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { ref,onMounted } from 'vue';
 import { UserRound } from 'lucide-vue-next';
 import { useCookies } from '@vueuse/integrations/useCookies'
 
 defineProps<{ msg: string }>()
-const cookies = useCookies(['ya_username'])
 const isUsername = ref(false);
+const cookies = useCookies(['ya_username'])
+
+cookies.addChangeListener(() => {
+  if (cookies.get('ya_username') && cookies.get('ya_username').trim() !== '') {
+    isUsername.value = true;
+  }
+})
 
 onMounted(() => {
   if (cookies.get('ya_username') && cookies.get('ya_username').trim() !== '') {
     isUsername.value = true;
   }
-});
+})
 </script>
 
 <template>
