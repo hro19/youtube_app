@@ -10,8 +10,8 @@ const cookies = useCookies(['ya_username'])
 const usernameFunc = new UsernameFunc();
 
 const removeUsername = () => {
-  cookies.remove('ya_username');
-}
+  cookies.set('ya_username', "", { expires: new Date(Date.now() + (24 * 60 * 60 * 1000)) });
+};
 
 cookies.addChangeListener(() => {
   headUsername.value = usernameFunc.usernameOrAnonimace(cookies.get('ya_username'));
@@ -29,7 +29,7 @@ onMounted(() => {
     <UserRound color="white" :size="22" />
     <span class="pl-2">{{ headUsername }}</span>
     <div v-if="usernameFunc.isNotNullEmpty(cookies.get('ya_username'))">
-      <a href="" @click="removeUsername" class="flex items-end ml-4 gap-1 underline">
+      <a href="#" @click.prevent="removeUsername" class="flex items-end ml-4 gap-1 underline">
       <span class="text-xs">ログアウト</span>
       <LogOut :size="14" />
       </a>

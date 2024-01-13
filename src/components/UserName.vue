@@ -22,10 +22,12 @@ import { ref, onBeforeMount } from "vue";
 import { Modal } from "@kouts/vue-modal";
 import '@kouts/vue-modal/dist/vue-modal.css'
 import { useCookies } from '@vueuse/integrations/useCookies'
+import UsernameFunc from '../features/usernameFunc';
 
 const cookies = useCookies(['ya_username'])
 const input = ref("");
 const showModal = ref(false);
+const usernameFunc = new UsernameFunc();
 
 onBeforeMount(() => {
     if (!cookies.get('ya_username')) {
@@ -33,6 +35,15 @@ onBeforeMount(() => {
     }
 });
 
+//監視してログインしていない場合はモーダルを表示する
+cookies.addChangeListener(async() => {
+    const flag = await cookies.get('ya_username')
+    if(!usernameFunc.isNotNullEmpty(flag)){
+        showModal.value = true;
+  }
+})
+
+//ログインしてモーダルを非表示する
 const loginUsername = async (name: string) => {
     await cookies.set('ya_username', name, { expires: new Date(Date.now() + (24 * 60 * 60 * 1000)) } as any)
     if (cookies.get('ya_username')) {
