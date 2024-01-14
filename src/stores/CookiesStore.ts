@@ -12,9 +12,9 @@ export const useCookiesStore = defineStore('cookies', {
         getUsername() {
             return this.cookies.get('ya_username')
         },
-        observerUsername(that:any) {
+        observerUsername() {
             this.cookies.addChangeListener(() => {
-                that = this.cookies
+                console.log(`${this.cookies}に変更されました`)
             })
         },
         removeUsername() {
