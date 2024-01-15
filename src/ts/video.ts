@@ -14,3 +14,12 @@ export type Video = {
     };
   };
 };
+
+export type FavoriteVideo = {
+  videoId: string;
+  title: string;
+  thumbnail: string;
+  channelId: string;
+  channelTitle: string;
+  publishedAt: string;
+};

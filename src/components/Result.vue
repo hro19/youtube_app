@@ -17,5 +17,4 @@ const videoStore = useVideoStore();
 </script>
 
 <style scoped>
-
-</style>../stores/video
+</style>

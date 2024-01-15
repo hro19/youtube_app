@@ -17,7 +17,7 @@
           <p>チャンネルID:{{ item.snippet.channelId }}</p>
           <button
             class="inline-flex items-center justify-center text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-primary/90 h-10 bg-green-500 text-white px-6 py-2 rounded"
-            @click="insertFavo(item.id.videoId,item.snippet.title,item.snippet.thumbnails.high.url)"
+            @click="favoriteAddFunc(item)"
           >
             後で見る
           </button>
@@ -28,10 +28,16 @@
 </template>
 
 <script setup lang="ts">
-import { computed,ref } from "vue";
+import { computed } from "vue";
 import { dateUntilDayJap } from "../lib/dateFns";
 import { Video } from "../ts/video";
-import { dbFavorites } from "../lib/dexie";
+import { favoriteAdd } from "../api/favorite";
+import { useCookiesStore } from '../stores/CookiesStore'
+import { useFavoriteStore } from "../stores/favoritesStore";
+
+const cookiesStore = useCookiesStore()
+const favoritesStore = useFavoriteStore()
+
 
 const props = defineProps({
   item: {
@@ -44,10 +50,21 @@ const dateJap = computed(() => {
   return dateUntilDayJap(props.item.snippet.publishedAt);
 });
 
-const favorites = ref<any>([]);
+function conversionVideo(video: Video) {
+  return {
+    videoId: video.id.videoId,
+    title: video.snippet.title,
+    thumbnail: video.snippet.thumbnails.high.url,
+    channelId: video.snippet.channelId,
+    channelTitle: video.snippet.channelTitle,
+    publishedAt: video.snippet.publishedAt,
+  };
+}
 
-const insertFavo = async(videoId: string, title: string, thumbnail:string) => {
-  dbFavorites.insert(videoId, title, thumbnail);
-  favorites.value = await dbFavorites.getsAll();
+const favoriteAddFunc = async (video:Video) => {
+  const newVideo = conversionVideo(video);
+  await favoriteAdd(cookiesStore.getUsername(), newVideo);
+  favoritesStore.pushToFavorites(newVideo);
 };
+
 </script>
