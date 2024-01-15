@@ -14,31 +14,21 @@
 <script lang="ts" setup>
 import { onMounted, ref } from "vue";
 import { useCookiesStore } from '../stores/CookiesStore'
+import { favoriteAll, favoriteDel } from "../api/favorite"
+
 const cookiesStore = useCookiesStore()
 
 const favorites = ref<any>([]);
 
-// const eliminateFavo = async(id: number) => {
-//     dbFavorites.eliminate(id);
-//     favorites.value = await dbFavorites.getsAll();
-// };
-
-// onMounted(async () => {
-//     favorites.value = await dbFavorites.getsAll();
-//     setInterval(refreshFavorites, 10000);
-// });
-
-// const refreshFavorites = async () => {
-//     favorites.value = await dbFavorites.getsAll();
-//     }
-
-import { favoriteAll,favoriteDel } from "../api/favorite"
-onMounted(async () => {
-    favorites.value = await favoriteAll(cookiesStore.getUsername());
-});
+const favoriteAllFunc = async (username: string) => {
+    favorites.value = await favoriteAll(username);
+}
 
 const favoriteDelFunc = async (username: string,videoId:string) => {
     await favoriteDel(username,videoId);
     favorites.value = await favoriteAll(username);
 }
+
+onMounted(()=>favoriteAllFunc(cookiesStore.getUsername()));
+
 </script>
