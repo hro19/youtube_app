@@ -40,8 +40,6 @@ const favoriteAllFunc = async (username: string) => {
   const { videos, success } = await favoriteAll(username);
   if (success) {
     await favoritesStore.setFavorites(videos);
-  } else {
-    await favoritesStore.setFavorites([]);
   }
 };
 
