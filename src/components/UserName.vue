@@ -23,6 +23,9 @@ import { Modal } from "@kouts/vue-modal";
 import '@kouts/vue-modal/dist/vue-modal.css'
 import { useCookies } from '@vueuse/integrations/useCookies'
 import UsernameFunc from '../features/usernameFunc';
+import { favoriteAll } from "../api/favorite";
+import { useFavoriteStore } from "../stores/favoritesStore";
+const favoritesStore = useFavoriteStore();
 
 const cookies = useCookies(['ya_username'])
 const input = ref("");
@@ -49,6 +52,9 @@ const loginUsername = async (name: string) => {
     if (cookies.get('ya_username')) {
         showModal.value = false;
     }
+    //ログイン後に「お気に入りall」を取得する
+    const { videos } = await favoriteAll(cookies.get('ya_username'));
+   favoritesStore.setFavorites(videos);
 }
 
 </script>
