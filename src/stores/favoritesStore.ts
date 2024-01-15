@@ -7,6 +7,7 @@ interface State {
 
 export const useFavoriteStore = defineStore({
   id: "favorite",
+  
   state: (): State => {
     return {
       favorites: [],
@@ -20,8 +21,12 @@ export const useFavoriteStore = defineStore({
   },
   actions: {
     // favoritesを引数の値でセットするsetter
-    async setFavorites(favorites: FavoriteVideo[]): Promise<void> {
-      this.favorites = favorites;
+    async setFavorites(favorites: FavoriteVideo[] | []): Promise<void> {
+      if (Array.isArray(favorites)) {
+        this.favorites = favorites;
+      } else {
+        this.favorites = [];
+      }
     },
     // 引数の値を現在のfavoritesの配列にpushするsetter
     async pushToFavorites(video: FavoriteVideo): Promise<void> {

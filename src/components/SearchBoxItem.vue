@@ -12,9 +12,9 @@
         /></a>
         <div class="ml-4">
           <p class="text-lg font-semibold">投稿日：{{ dateJap }}</p>
-          <p class="mt-2 text-xl"><a class="underline" :href="'https://www.youtube.com/watch?v=' + item.id.videoId">{{ item.snippet.channelTitle }}</a></p>
+          <p class="mt-2 text-xl"><a class="underline" :href="'https://www.youtube.com/watch?v=' + item.id.videoId">{{ item.snippet.title }}</a></p>
           <p class="mt-4 mb-4 text-sm font-medium">チャンネル名:{{ item.snippet.channelTitle }}</p>
-          <p>チャンネルID:{{ item.snippet.channelId }}</p>
+          <!-- <p>チャンネルID:{{ item.snippet.channelId }}</p> -->
           <button
             class="inline-flex items-center justify-center text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-primary/90 h-10 bg-green-500 text-white px-6 py-2 rounded"
             @click="favoriteAddFunc(item)"
@@ -50,7 +50,7 @@ const dateJap = computed(() => {
   return dateUntilDayJap(props.item.snippet.publishedAt);
 });
 
-function conversionVideo(video: Video) {
+async function conversionVideo(video: Video) {
   return {
     videoId: video.id.videoId,
     title: video.snippet.title,
@@ -62,9 +62,9 @@ function conversionVideo(video: Video) {
 }
 
 const favoriteAddFunc = async (video:Video) => {
-  const newVideo = conversionVideo(video);
+  const newVideo = await conversionVideo(video);
   await favoriteAdd(cookiesStore.getUsername(), newVideo);
-  favoritesStore.pushToFavorites(newVideo);
+  await favoritesStore.pushToFavorites(newVideo);
 };
 
 </script>
