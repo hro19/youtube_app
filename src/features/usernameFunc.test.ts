@@ -1,4 +1,4 @@
-import UsernameFunc from './usernameFunc';
+import UsernameFunc from "./usernameFunc";
 import { expect, it, describe, beforeEach } from "vitest";
 
 describe('UsernameFuncのテスト', () => {
@@ -18,7 +18,7 @@ describe('UsernameFuncのテスト', () => {
         it('should return "ログインしてください" if the value is null or empty', () => {
             const value = '';
             const result = usernameFunc.usernameOrAnonimace(value);
-            expect(result).toBe('ログインしてください');
+            expect(result).toBe('<a href="/" class="underline">ログインしてください</a>');
         });
     });
 
@@ -35,7 +35,7 @@ describe('UsernameFuncのテスト', () => {
             expect(result).toBe(false);
         });
 
-        it('should return false if the valueはnullのとき', () => {
+        it('should return false if the value is null', () => {
             const value: any = null;
             const result = usernameFunc.isNotNullEmpty(value);
             expect(result).toBe(false);

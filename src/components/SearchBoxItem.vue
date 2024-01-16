@@ -34,6 +34,7 @@ import { Video } from "../ts/video";
 import { favoriteAdd } from "../api/favorite";
 import { useCookiesStore } from '../stores/CookiesStore'
 import { useFavoriteStore } from "../stores/favoritesStore";
+import { conversionVideo } from "../features/convertedToFavoriteVideo"
 
 const cookiesStore = useCookiesStore()
 const favoritesStore = useFavoriteStore()
@@ -49,17 +50,6 @@ const props = defineProps({
 const dateJap = computed(() => {
   return dateUntilDayJap(props.item.snippet.publishedAt);
 });
-
-async function conversionVideo(video: Video) {
-  return {
-    videoId: video.id.videoId,
-    title: video.snippet.title,
-    thumbnail: video.snippet.thumbnails.high.url,
-    channelId: video.snippet.channelId,
-    channelTitle: video.snippet.channelTitle,
-    publishedAt: video.snippet.publishedAt,
-  };
-}
 
 const favoriteAddFunc = async (video:Video) => {
   const newVideo = await conversionVideo(video);
