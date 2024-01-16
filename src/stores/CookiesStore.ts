@@ -19,6 +19,10 @@ export const useCookiesStore = defineStore('cookies', {
         },
         removeUsername() {
             this.cookies.remove('ya_username')
+        },
+        isUsername(){
+            const username = this.cookies.get('ya_username')
+            return username !== null && username !== ""
         }
     }
 })

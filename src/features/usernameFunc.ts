@@ -2,7 +2,7 @@ export default class UsernameFunc {
 
     //文字文字列がnullか空かどうかを判定して、空なら匿名のテキストを返す関数
   usernameOrAnonimace(value: string): string {
-    const loginText = "ログインしてください";
+    const loginText = '<a href="/" class="underline">ログインしてください</a>';
     return this.isNotNullEmpty(value) ? value : loginText;
   }
 

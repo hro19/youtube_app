@@ -30,7 +30,7 @@ const resetFavorites = async()=> {
   <div class="flex justify-start items-center bg-red-700 py-2 pl-4">
     <h1 class="text-2xl pr-8">{{ msg }}</h1>
     <UserRound color="white" :size="22" />
-    <span class="pl-2">{{ headUsername }}</span>
+    <span v-html="headUsername" class="pl-2"></span>
     <div v-if="usernameFunc.isNotNullEmpty(cookiesStore.getUsername())">
       <a href="#" @click.prevent="resetFavorites()" class="flex items-end ml-4 gap-1 underline">
       <span class="text-xs">ログアウト</span>
