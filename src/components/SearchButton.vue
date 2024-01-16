@@ -1,6 +1,6 @@
 <template>
 <div class="button-box">
-    <button @click="videoStore.search(videoStore)">検索</button>
+    <button id="youtube_search_bt" @click="videoStore.search(videoStore)">検索</button>
 </div>
 </template>
 

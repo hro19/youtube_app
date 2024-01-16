@@ -1,10 +1,12 @@
 <template>
     <ul v-if="videoStore.videoDesc">
-      <SearchBoxItem
-        v-for="item in videoStore.videoDesc" 
-        :key="item.id.videoId"
-        :item="item" 
-      />
+      <div id="results">
+        <SearchBoxItem
+          v-for="item in videoStore.videoDesc" 
+          :key="item.id.videoId"
+          :item="item" 
+        />
+      </div>
     </ul>
     <p v-else>表示できるデータがありません</p>
 </template>
