@@ -3,13 +3,13 @@
         <!-- <button type="button" class="btn btn-primary" @click="showModal = true">Open modal</button> -->
         <Modal v-model="showModal" title="ユーザーネーム" wrapper-class="modal-wrapper">
             <div class="mb-3">
-                <el-input placeholder="ユーザーネームを入力ください" v-model="input"></el-input>
+                <el-input placeholder="ユーザーネームを入力ください" v-model="input" name="username"></el-input>
             </div>
             <div class="row">
                 <div class="col-sm-12">
                     <div class="flex justify-end gap-2">
-                        <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full" type="button" @click="loginUsername(input)">ログイン</button>
-                        <button class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full" type="button" @click="showModal = false">Close</button>
+                        <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full" type="button" id="user_login" @click="loginUsername(input)">ログイン</button>
+                        <button class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full" type="button" id="user_close" @click="showModal = false">Close</button>
                     </div>
                 </div>
             </div>
